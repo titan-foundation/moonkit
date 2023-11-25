@@ -1,0 +1,46 @@
+[package]
+name = "pallet-author-slot-filter"
+authors = [ "Moonsong Labs" ]
+description = "Selects a pseudorandom Subset of eligible (probably staked) authors at each slot"
+edition = "2021"
+version = "0.9.0"
+
+[dependencies]
+parity-scale-codec = { workspace = true }
+frame-support = { workspace = true }
+frame-system = { workspace = true }
+log = { workspace = true }
+nimbus-primitives = { workspace = true }
+scale-info = { workspace = true }
+serde = { workspace = true }
+sp-core = { workspace = true }
+sp-runtime = { workspace = true }
+sp-std = { workspace = true }
+
+# Benchmarks
+frame-benchmarking = { workspace = true, optional = true }
+
+
+[dev-dependencies]
+frame-support-test = { workspace = true }
+sp-io = { workspace = true }
+
+[features]
+default = [ "std" ]
+std = [
+	"frame-benchmarking/std",
+	"frame-support/std",
+	"frame-system/std",
+	"log/std",
+	"nimbus-primitives/std",
+	"parity-scale-codec/std",
+	"scale-info/std",
+	"serde/std",
+	"sp-core/std",
+	"sp-runtime/std",
+	"sp-std/std",
+]
+
+runtime-benchmarks = [ "frame-benchmarking", "nimbus-primitives/runtime-benchmarks" ]
+
+try-runtime = [ "frame-support/try-runtime", "nimbus-primitives/try-runtime" ]
